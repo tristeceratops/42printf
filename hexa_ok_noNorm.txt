@@ -1,0 +1,143 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int	is_in_set(char c, char const *set)
+{
+	while (*set)
+	{
+		if (*set == c)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
+char	*trim_left(char const *s, char const *set)
+{
+	size_t	start;
+
+	start = 0;
+	while (s[start] && is_in_set(s[start], set))
+		start++;
+	return ((char *)&s[start]);
+}
+
+int     get_index_base(char *base, char c)
+{
+    int i;
+    i = 0;
+    while (base[i] != '\0')
+    {
+        if (base[i] == c)
+            break;
+        i++;
+    }
+    return (i);
+}
+
+char    *add_one_str_base(char *str, char *base)
+{
+    int index;
+    int i;
+    i = 7;
+    index = get_index_base(base, str[7]);
+    if (index != 15)
+        str[i] = base[index + 1];
+    else
+    {
+        while (str[i] == base[strlen(base) - 1] && i > 0)
+        {
+            str[i] = base[0];
+            i--;
+        }
+        index = get_index_base(base, str[i]);
+        str[i] = base[index + 1];
+    }
+    return (str);
+}
+
+void    rev_str_base(char *str, char *base, int basesize)
+{
+    int index;
+    
+    while (*str != '\0')
+    {
+        index = get_index_base(base, *str);
+        *str = base[-(index - (basesize - 1))];
+        str++;
+    }
+}
+
+void    ft_rev_char_tab(char *tab, int size)
+{
+        int     mem_a;
+        int     mem_b;
+        int     i;
+        int     j;
+
+        i = 1;
+        j = 0;
+        while (j < size / 2)
+        {
+                mem_a = *tab;
+                tab += size - i - j;
+                mem_b = *tab;
+                *tab = mem_a;
+                tab -= size - i - j;
+                *tab = mem_b;
+                tab++;
+                i++;
+                j++;
+        }
+}
+char    *convert_neg_to_hex(unsigned int i, char *base)
+{       
+        long     temp;
+        int     size;
+        char    *str;
+        int     j;
+        
+        if (i == 0)
+            return "0";
+        i = -i;
+        temp = i;
+        size = 8;
+        while (temp != 0)
+        {
+                temp /= strlen(base);
+                size--;
+        }
+        str = calloc(sizeof(char), 8);
+        if (!str)
+                return (0);
+        j = 0;
+        while (i != 0)
+        {
+            if (j < size){
+                str[j] = base[0];
+            }
+            else
+            {
+                str[j] = base[i % strlen(base)];
+                i /= strlen(base);
+            }
+            j++;
+        }
+        ft_rev_char_tab(str + size, (8 - size));
+        rev_str_base(str, base, strlen(base));
+        str = add_one_str_base(str, base);
+        str = trim_left(str, "0");
+        return (str);
+}
+
+
+int main() {
+    int hex = -42949813481754647575445456;
+    char    *str = convert_neg_to_hex(hex, "0123456789abcdef");
+    printf("%s\n", str);
+    printf("%x\n", hex);
+
+    return 0;
+}

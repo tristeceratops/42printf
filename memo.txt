@@ -1,0 +1,58 @@
+prototype :
+int	ft_printf(const char *str, ...);
+
+reflexion:
+lorsque l'on veut exploité les ... avec va_arg(), seul un type peut être définis par va_arg.
+Or plusieurs types différents peuvent être dans ..., il faudra prendre cela en compte.
+
+vrai printf(): 
+-des valeurs sont sorties lorsqu'aucune autre ne soit spécifié par les %, surement de la mémoire. Le man dit que le resultat dans ces moments là est indéfinis, on peut considérer que les ignorés peut etre une bonne option, ce cas arrive lorsque le type de l'argument n'est pas celui voulu
+-si trop de valeurs sont rentrés dans les ..., aucune erreur. La fonction écris correctement le str
+%p = pointer address -> entier mais f
+%x et %X = recoit un int (dec) et affiche l'int convertit en HEX
+ft_printf :
+	- on ouvre les args et on boucle dans le str en écrivant les char dans le terminal
+	- lorsqu'on l'on détecte un %, on regarde ce qu'il y a après et on appelle la fonction correspondante
+	- info à donner aux fonctions -> l'argument
+	
+000000EA
+FFFFFF16
+
+0	0000	1111
+1	0001	1110	
+2	0010	1101
+3	0011	1100
+4	0100	1011
+5	0101	1010
+6	0110	1001
+7	0111	1000
+8	1000	0111
+9	1001	0110
+a	1010	0101
+b	1011	0100
+c	1100	0011
+d	1101	0010
+e	1110	0001
+f	1111	0000
+
+besoin:
+un algo qui convertie un entier decimal en hexa, celui ci sortira sous formes de string
+un pour le positive et un autre pour le negative
+une fonction qui ajoute +1 à un nombre hexa donné en str
+
+int main() {
+    int data = 29;
+    printf("%x\n", data);    // just print data
+    printf("%0x\n", data);   // just print data ('0' on its own has no effect)
+    printf("%8x\n", data);   // print in 8 width and pad with blank spaces
+    printf("%08x\n", data);  // print in 8 width and pad with 0's
+
+    return 0;
+}
+
+réécrire printf et prendre en compte que :
+-on doit retourner le nombre de char que l'on print
+-l'hexa peut etre signé (inverse + 1)
+-l'adresse point est un entier (surement pas un int) qu'on doit convertir en hexa
+-chaque fonction de print va devoir compter les char
+-
