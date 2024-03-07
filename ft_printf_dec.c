@@ -6,7 +6,7 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 11:48:19 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/01 10:47:55 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:34:32 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_printf_dec(va_list arg)
 
 	dec = va_arg(arg, int);
 	count = 0;
-	if (dec < 0)
+	if (dec <= 0)
 		count++;
 	temp = dec;
 	while (temp != 0)
