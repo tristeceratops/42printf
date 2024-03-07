@@ -6,7 +6,7 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:55:57 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/01 18:16:39 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:38:12 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	ft_call_print(char c, va_list arg)
 	else if (c == '%')
 	{
 		ft_putchar_fd('%', 1);
-		count++;
+		count = 1;
 	}
 	else
-		count = 0;
+		count = -1;
 	return (count);
 }
 
@@ -60,12 +60,10 @@ int	ft_printf(const char *str, ...)
 		{
 			check_call = ft_call_print(*(str + 1), arg);
 			if (check_call != 0)
-			{
-				str += 2;
 				count += check_call;
-			}
-			else
-				str++;
+			else if (check_call < 0)
+				return (-1);
+			str+=2;
 		}
 	}
 	return (count);
