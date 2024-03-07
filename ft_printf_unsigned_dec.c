@@ -6,7 +6,7 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:47:14 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/01 11:10:22 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/04 13:36:08 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	ft_printf_unsigned_dec(va_list arg)
 	u = va_arg(arg, unsigned int);
 	temp = u;
 	count = 0;
+	if (u == 0)
+		count++;
 	while (temp != 0)
 	{
 		count++;

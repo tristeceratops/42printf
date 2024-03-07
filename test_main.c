@@ -6,7 +6,7 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:48:14 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/01 17:37:48 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:47:03 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,109 +14,89 @@
 #include "libftprintf.h"
 #include <limits.h>
 
+//les int sont dans cet ordre -> printf ft_printf
+//les affichages sont dans cet ordre -> ft_print printf
+
 int	main(void)
 {
-	ft_printf("1////////////////////////////\n");
+	ft_printf("c////////////////////////////\n");
+	char	c = 0;
 
-	int	i = 0;
-	printf("%d and %d\n",
-	printf("%d\n", i),
-	ft_printf("%d\n", i));
-
-	ft_printf("2////////////////////////////\n");
-	
-	printf("%d and %d\n",
-	printf("%u\n", i),
-	ft_printf("%u\n", i));
-        
-	ft_printf("3////////////////////////////\n");
-
-	printf("%d and %d\n",
-	printf("%i\n", i),
-	ft_printf("%i\n", i));
-	
-	ft_printf("4////////////////////////////\n");
-
-	i = -57;
-	printf("%d and %d\n",
-	printf("%d\n", i),
-	ft_printf("%d\n", i));
-	
-	ft_printf("5////////////////////////////\n");
-
-	printf("%d and %d\n",
-	printf("%u\n", i),
-	ft_printf("%u\n", i));
-        
-	ft_printf("6////////////////////////////\n");
-
-	printf("%d and %d\n",
-	printf("%i\n", i),
-	ft_printf("%i\n", i));
-	
-	ft_printf("7////////////////////////////\n");
-
-	i = INT_MIN;
-	printf("%d and %d\n",
-	printf("%d\n", i),
-	ft_printf("%d\n", i));
-
-	ft_printf("8////////////////////////////\n");
-
-	char	c = '4';
-
-	printf("%d and %d\n",
-	printf("%d\n", c),
-	ft_printf("%d\n", c));
-
-	ft_printf("9////////////////////////////\n");
-
-	printf("%d and %d\n",
+	printf("1) %d and %d\n",
 	printf("%c\n", c),
 	ft_printf("%c\n", c));
 
-	ft_printf("10////////////////////////////\n");
+	c = '0';
+	printf("2) %d and %d\n",
+	printf("%c\n", c),
+	ft_printf("%c\n", c));
 
-	char	*str = "Salut 42 !";
+	printf("3) %d and %d\n",
+	printf("   %c   \n", c),
+	ft_printf("   %c   \n", c));
 
-	printf("%d and %d\n",
-	printf("%s\n", str),
-	ft_printf("%s\n", str));
-
-	ft_printf("11////////////////////////////\n");
-
-	printf("%d and %d\n",
-	printf("%p\n", str),
-	ft_printf("%p\n", str));
-
-	ft_printf("12////////////////////////////\n");
-
-	i = 4821;
-	printf("%d and %d\n",
-	printf("%x\n", i),
-	ft_printf("%x\n", i));
-
-	i = 0;
-        printf("%d and %d\n",
-        printf("%x\n", i),
-        ft_printf("%x\n", i));
-
-	ft_printf("13////////////////////////////\n");
-
-	printf("%d and %d\n",
-	printf("%X\n", i),
-	ft_printf("%X\n", i));
+	printf("4) %d and %d\n",
+	printf("%cz\n"),
+	ft_printf("%cz\n"));
 	
-	ft_printf("14////////////////////////////\n");
+	char d = 'E';
+	char e = '\0';
+	printf("5) %d and %d\n",
+	printf("%c %c %c test\n", c, d, e),
+	ft_printf("%c %c %c test\n", c, d, e));
 
-	i = -4821;
-	printf("%d and %d\n",
-	printf("%x\n", i),
-	ft_printf("%x\n", i));
+	ft_printf("s////////////////////////////\n");
+	char	*s = "";
 
-	ft_printf("15////////////////////////////\n");
+	printf("1) %d and %d\n",
+	printf("%s\n", s),
+	ft_printf("%s\n", s));
 
-	printf("%d and %d\n",
-	printf("%X\n", i),
-	ft_printf("%X\n", i));
+	s = NULL;
+	printf("1) %d and %d\n",
+	printf(" NULL %s NULL %s\n", s, s),
+	ft_printf(" NULL %s NULL %s\n", s, s));
+
+	ft_printf("p//////////////////////////////\n");
+
+	char	*p = "pointer";
+	printf("1) %d and %d\n",
+	printf("%p\n", p),
+	ft_printf("%p\n", p));
+
+	p = 0;
+	printf("1) %d and %d\n",
+	printf("%p %p\n", p, p),
+	ft_printf("%p %p\n", p, p));
+
+	ft_printf("d/////////////////////////////\n");
+
+	int	i = 0;
+	printf("1) %d and %d\n",
+	printf("%d\n", i),
+	ft_printf("%d\n", i));
+
+	ft_printf("%////////////////////////////////\n");
+
+	printf("1) %d and %d\n",
+	printf("%%50\n"),
+	ft_printf("%%50\n"));
+
+	printf("2) %d and %d\n",
+	printf("%rr\n"),
+	ft_printf("%rr\n"));
+
+	printf("3) %d and %d\n",
+	printf("solde a 50% whaou\n"),
+	ft_printf("solde a 50% whaou\n"));
+
+	ft_printf("mix//////////////////////////////\n");
+
+	char	*quote = "Salut zigotos";
+	int	nb1 = 45;
+	unsigned int	nb2 = 23;
+
+	printf("1) %d and %d\n",
+	printf("%s tu as %i et %d jouets\n",quote, nb1, nb2),
+	ft_printf("%s tu as %i et %d jouets\n", quote, nb1, nb2));
 }
