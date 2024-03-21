@@ -5,33 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 15:13:08 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/04 13:21:58 by ewoillar         ###   ########.fr       */
+/*   Created: 2024/03/12 13:11:07 by ewoillar          #+#    #+#             */
+/*   Updated: 2024/03/12 17:14:25 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf_ptr(va_list arg)
 {
-	void	*ptr;
-	int	count;
-	char	*str;
+	int					size;
+	unsigned long long	u;
 
-	count = 0;
-	ptr = va_arg(arg, void *);
-	if (ptr == 0)
+	u = va_arg(arg, unsigned long long);
+	if (u == 0)
 	{
 		ft_putstr_fd("(nil)", 1);
 		return (5);
 	}
-	str = convert_dec_hex((uintptr_t)ptr, "0123456789abcdef");
-	if (!str)
-		return (0);
+	size = 2;
 	ft_putstr_fd("0x", 1);
-	count += 2;
-	count += ft_strlen(str);
-	ft_putstr_fd(str, 1);
-	free(str);
-	return (count);
+	size += print_hex("0123456789abcdef", u);
+	return (size);
 }

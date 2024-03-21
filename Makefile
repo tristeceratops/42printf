@@ -1,6 +1,6 @@
 NAME := libftprintf.a
-FLAGS :=
-FILES := ft_printf.c ft_printf_dec.c ft_printf_char.c ft_printf_hexa.c ft_printf_str.c ft_hexa_utils.c \
+FLAGS := -Wall -Wextra -Werror
+FILES := ft_printf.c ft_printf_dec.c ft_printf_char.c ft_printf_hex.c ft_printf_str.c \
 	 ft_printf_unsigned_dec.c ft_printf_ptr.c
 OBJ_FILES := $(FILES:.c=.o)
 LIBFT := libft

@@ -6,18 +6,18 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 15:48:14 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/04 14:47:03 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:15:45 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <limits.h>
 
 //les int sont dans cet ordre -> printf ft_printf
 //les affichages sont dans cet ordre -> ft_print printf
 
-int	main(void)
+/*int	main(void)
 {
 	ft_printf("c////////////////////////////\n");
 	char	c = 0;
@@ -99,4 +99,4 @@ int	main(void)
 	printf("1) %d and %d\n",
 	printf("%s tu as %i et %d jouets\n",quote, nb1, nb2),
 	ft_printf("%s tu as %i et %d jouets\n", quote, nb1, nb2));
-}
+}*/

@@ -6,13 +6,11 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:55:57 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/04 14:38:12 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:13:30 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "libftprintf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 int	ft_call_print(char c, va_list arg)
 {
@@ -26,8 +24,10 @@ int	ft_call_print(char c, va_list arg)
 		count = ft_printf_char(arg);
 	else if (c == 's')
 		count = ft_printf_str(arg);
-	else if (c == 'x' || c == 'X')
-		count = ft_printf_hexa(c, arg);
+	else if (c == 'x')
+		count = ft_printf_hex(arg, "0123456789abcdef");
+	else if (c == 'X')
+		count = ft_printf_hex(arg, "0123456789ABCDEF");
 	else if (c == 'p')
 		count = ft_printf_ptr(arg);
 	else if (c == '%')
@@ -42,9 +42,9 @@ int	ft_call_print(char c, va_list arg)
 
 int	ft_printf(const char *str, ...)
 {
-	va_list arg;
-	int	count;
-	int	check_call;
+	va_list	arg;
+	int		count;
+	int		check_call;
 
 	va_start(arg, str);
 	count = 0;
@@ -63,7 +63,7 @@ int	ft_printf(const char *str, ...)
 				count += check_call;
 			else if (check_call < 0)
 				return (-1);
-			str+=2;
+			str += 2;
 		}
 	}
 	return (count);

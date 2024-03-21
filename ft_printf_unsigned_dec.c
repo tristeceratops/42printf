@@ -6,11 +6,11 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:47:14 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/04 13:36:08 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:16:35 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_printundint(unsigned int u)
 {
@@ -25,13 +25,12 @@ void	ft_printundint(unsigned int u)
 	{
 		c = u + '0';
 		ft_putchar_fd(c, 1);
-	}
-	
+	}	
 }
 
 int	ft_printf_unsigned_dec(va_list arg)
 {
-	int	count;
+	int				count;
 	unsigned int	temp;
 	unsigned int	u;
 

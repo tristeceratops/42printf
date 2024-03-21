@@ -6,16 +6,16 @@
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 14:06:25 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/04 13:15:31 by ewoillar         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:11:11 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf_str(va_list arg)
 {
 	char	*str;
-	int	ret;
+	int		ret;
 
 	str = va_arg(arg, char *);
 	if (str == NULL)

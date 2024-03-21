@@ -1,19 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_char.c                                   :+:      :+:    :+:   */
+/*   ft_printf_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewoillar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 14:04:40 by ewoillar          #+#    #+#             */
-/*   Updated: 2024/03/12 14:14:44 by ewoillar         ###   ########.fr       */
+/*   Created: 2024/03/12 10:46:07 by ewoillar          #+#    #+#             */
+/*   Updated: 2024/03/12 17:15:17 by ewoillar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_char(va_list arg)
+int	print_hex(char *base, unsigned long long u)
 {
-	ft_putchar_fd(va_arg(arg, int), 1);
-	return (1);
+	int	size;
+
+	size = 0;
+	if (u >= 16)
+	{
+		size += print_hex(base, u / 16);
+		size += print_hex(base, u % 16);
+	}
+	else
+	{
+		ft_putchar_fd(base[u], 1);
+		return (1);
+	}
+	return (size);
+}
+
+int	ft_printf_hex(va_list arg, char *base)
+{
+	int				size;
+	unsigned int	u;
+
+	u = va_arg(arg, unsigned int);
+	size = print_hex(base, u);
+	return (size);
 }
